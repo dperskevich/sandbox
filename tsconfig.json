@@ -1,0 +1,32 @@
+{
+  "compilerOptions": {
+    // we can ignowe because we use webpack
+    "outDir": "./build/",
+    // highlight missing types in ts files
+    "noImplicitAny": true,
+    // we want to use es modules instead of commonjs (nodejs default)
+    "module": "ES2020",
+    // into which version of js we want to compile our ts code (lower for better compatibility)
+    "target": "es5",
+    // with this option we can use jsx syntax in ts files
+    // react-jsx - allows to omit import React from 'react'
+    "jsx": "react-jsx",
+    // compiler will process not only ts but js files too
+    "allowJs": true,
+    // which module system we use. 99% of the time the value is "node"
+    "moduleResolution": "node",
+    // we can use import instead of require (es module imports instead commonjs)
+    "esModuleInterop": true,
+    // we can use default imports, and import * as x from 'y'
+    // some of the libs has no default export, so we need to set this to true
+    "allowSyntheticDefaultImports": true
+    // We can use absolute paths in our imports
+    //"baseUrl": "."
+  },
+  "ts-node": {
+    "compilerOptions": {
+      "module": "CommonJS",
+      "plugins": [{ "name": "typescript-plugin-css-modules" }]
+    }
+  }
+}
