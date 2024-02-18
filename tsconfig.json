@@ -19,9 +19,13 @@
     "esModuleInterop": true,
     // we can use default imports, and import * as x from 'y'
     // some of the libs has no default export, so we need to set this to true
-    "allowSyntheticDefaultImports": true
-    // We can use absolute paths in our imports
-    //"baseUrl": "."
+    "allowSyntheticDefaultImports": true,
+    // We can use absolute paths in our imports #1
+    "baseUrl": ".",
+    // We can use absolute paths in our imports #2
+    "paths": {
+      "@/*": ["./src/*"]
+    }
   },
   "ts-node": {
     "compilerOptions": {

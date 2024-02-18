@@ -1,0 +1,30 @@
+.navbar {
+  width: 100%;
+  height: var(--navbar-height);
+  padding: 20px;
+  background-color: var(--inverted-bg-color);
+  color: var(--secondary-color);
+  display: flex;
+  align-items: center;
+
+  .logo {
+    color: var(--primary-color);
+    margin: 0 6px;
+  }
+
+  .title {
+    color: var(--primary-color);
+    font-size: 1.5rem;
+    font-weight: 700;
+  }
+
+  .links {
+    display: flex;
+    margin-left: auto;
+    gap: 15px;
+  }
+
+  .themeToggle {
+    margin-left: 15px;
+  }
+}

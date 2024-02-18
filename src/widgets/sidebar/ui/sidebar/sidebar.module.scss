@@ -1,0 +1,23 @@
+.sidebar {
+  height: calc(100vh - var(--navbar-height));
+  width: 300px;
+  padding: 20px;
+  background: var(--inverted-bg-color);
+  display: flex;
+  flex-direction: column;
+  transition: width 0.2s;
+
+  &.collapsed {
+    width: 72px;
+    overflow: hidden;
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .bottomToolbar {
+    margin-top: auto;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 20px;
+  }
+}

@@ -1,0 +1,19 @@
+.button {
+  cursor: pointer;
+}
+
+.primary {
+  color: white;
+  background-color: var(--primary-color);
+  border: none;
+  border-radius: 5px;
+  padding: 8px 16px;
+}
+
+.text {
+  border: none;
+  padding: 0;
+  margin: 0;
+  background: none;
+  outline: none;
+}
