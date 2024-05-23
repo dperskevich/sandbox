@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    // we can ignowe because we use webpack
+    // we can ignore because we use webpack
     "outDir": "./build/",
     // highlight missing types in ts files
     "noImplicitAny": true,

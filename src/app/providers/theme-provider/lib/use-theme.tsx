@@ -1,5 +1,5 @@
-import { useContext } from "react";
-import { ThemeContext, Theme } from "./theme-context";
+import { useContext } from 'react';
+import { ThemeContext, Theme } from './theme-context';
 
 export interface UseThemeResult {
     theme: Theme;
@@ -8,11 +8,11 @@ export interface UseThemeResult {
 }
 
 export const useTheme = (): UseThemeResult => {
-    const { theme, setTheme, toggleTheme } = useContext(ThemeContext);
+  const { theme, setTheme, toggleTheme } = useContext(ThemeContext);
 
-    return {
-        theme,
-        setTheme,
-        toggleTheme
-    }
-}
+  return {
+    theme,
+    setTheme,
+    toggleTheme,
+  };
+};
