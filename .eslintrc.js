@@ -20,7 +20,10 @@ module.exports = {
 	plugins: ['react', '@typescript-eslint', 'i18next'],
 	rules: {
 		quotes: ['error', 'single'],
-		indent: ['error', 2],
+		indent: ['error', 2, {
+			SwitchCase: 1,
+			ignoredNodes: ['ConditionalExpression'],
+		}],
 		'no-console': 'off', // no console.log warning
 		'no-unused-vars': 'warn',
 		'no-undef': 'warn',
