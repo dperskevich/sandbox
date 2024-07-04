@@ -1,8 +1,8 @@
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import { DefinePlugin, ProgressPlugin, WebpackPluginInstance } from 'webpack';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
-import { BuildOptions } from './types/config';
 import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
+import { BuildOptions } from './types/config';
 
 export function BuildPlugins({ paths, isDev }: BuildOptions): WebpackPluginInstance[] {
   return [
@@ -17,7 +17,7 @@ export function BuildPlugins({ paths, isDev }: BuildOptions): WebpackPluginInsta
       __IS_DEV__: JSON.stringify(isDev),
     }),
     new BundleAnalyzerPlugin({
-      openAnalyzer: false
+      openAnalyzer: false,
     }),
   ];
 }
