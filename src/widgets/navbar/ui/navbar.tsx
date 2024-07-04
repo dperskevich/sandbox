@@ -4,13 +4,11 @@ import { classNames } from '@/shared/lib/class-names';
 import styles from './navbar.module.scss';
 import { AppLink } from '@/shared/ui';
 import SandboxIcon from '@/shared/assets/icons/sandbox.svg';
+import { AppRoutes } from '@/shared/config/router/router-config';
 
 interface NavbarProps {
-    className?: string;
+  className?: string;
 }
-
-// todo: consider moving to constants
-const AboutRoutePath = '/about';
 
 export const Navbar: FC<NavbarProps> = ({ className }) => {
   const { t } = useTranslation();
@@ -20,8 +18,8 @@ export const Navbar: FC<NavbarProps> = ({ className }) => {
       <SandboxIcon className={styles.logo} />
       <div className={styles.title}>{t('Sandbox')}</div>
       <div className={styles.links}>
-        <AppLink to="/">{t('Main')}</AppLink>
-        <AppLink to={AboutRoutePath}>{t('About')}</AppLink>
+        <AppLink to={AppRoutes.MAIN}>{t('Main')}</AppLink>
+        <AppLink to={AppRoutes.ABOUT}>{t('About')}</AppLink>
       </div>
     </div>
   );
