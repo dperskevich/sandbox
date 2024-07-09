@@ -1,12 +1,12 @@
 import React, { FC } from 'react';
 import { useTranslation } from 'react-i18next';
-import { classNames } from '@/shared/lib/class-names';
+import { classNames } from 'shared/lib/class-names/class-names';
+import { useTheme } from 'app/providers/theme-provider';
 import styles from './theme-toggle.module.scss';
-import { useTheme } from '@/app/providers/theme-provider';
 import { Button } from '../button/button';
 
 interface ThemeToggleProps {
-    className?: string;
+  className?: string;
 }
 
 export const ThemeToggle: FC<ThemeToggleProps> = (props) => {

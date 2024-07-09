@@ -1,10 +1,10 @@
 import React, { FC } from 'react';
 import { useTranslation } from 'react-i18next';
-import { classNames } from '@/shared/lib/class-names';
+import { classNames } from 'shared/lib/class-names/class-names';
+import { AppLink } from 'shared/ui';
+import SandboxIcon from 'shared/assets/icons/sandbox.svg';
+import { AppRoutes } from 'shared/config/router/router-config';
 import styles from './navbar.module.scss';
-import { AppLink } from '@/shared/ui';
-import SandboxIcon from '@/shared/assets/icons/sandbox.svg';
-import { AppRoutes } from '@/shared/config/router/router-config';
 
 interface NavbarProps {
   className?: string;

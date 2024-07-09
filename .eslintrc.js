@@ -2,7 +2,7 @@ module.exports = {
   env: {
     browser: true,
     es2021: true,
-    jest: true
+    jest: true,
   },
   extends: [
     'plugin:react/recommended',
@@ -31,7 +31,6 @@ module.exports = {
     'no-underscore-dangle': 'warn',
     'max-len': ['error', { code: 120 }],
     '@typescript-eslint/no-shadow': 'error',
-    'i18next/no-literal-string': ['error', { markupOnly: true }],
     'import/extensions': 'off',
     'import/no-unresolved': 'off',
     'import/prefer-default-export': 'off',
@@ -47,8 +46,17 @@ module.exports = {
         unnamedComponents: 'arrow-function',
       },
     ],
+    'i18next/no-literal-string': ['error', { markupOnly: true, ignoreAttribute: ['data-testid'] }],
   },
   globals: {
     __IS_DEV__: true,
   },
+  overrides: [
+    {
+      files: ['**/src/**/*.test.{ts,tsx}'],
+      rules: {
+        'i18next/no-literal-string': 'off',
+      },
+    },
+  ],
 };

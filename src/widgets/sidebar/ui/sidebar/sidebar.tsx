@@ -1,9 +1,9 @@
 import React, { FC, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { classNames } from '@/shared/lib/class-names';
+import { classNames } from 'shared/lib/class-names/class-names';
+import { Button, ThemeToggle } from 'shared/ui';
+import { LangToggle } from 'shared/ui/lang-toggle/lang-toggle';
 import styles from './sidebar.module.scss';
-import { Button, ThemeToggle } from '@/shared/ui';
-import { LangToggle } from '@/shared/ui/lang-toggle/lang-toggle';
 
 interface SidebarProps {
   className?: string;
@@ -14,13 +14,16 @@ export const Sidebar: FC<SidebarProps> = (props) => {
   const { t } = useTranslation();
   const [collapsed, setCollapsed] = useState(false);
 
-  const toggleTheme = () => {
+  const toggleCollapsed = () => {
     setCollapsed((prev) => !prev);
   };
 
   return (
-    <div className={classNames(styles.sidebar, { [styles.collapsed]: collapsed }, [className])}>
-      <Button onClick={toggleTheme}>{t('Toggle')}</Button>
+    <div
+      data-testid="Sidebar"
+      className={classNames(styles.sidebar, { [styles.collapsed]: collapsed }, [className])}
+    >
+      <Button onClick={toggleCollapsed} data-testid="sidebar-toggle">{t('Toggle')}</Button>
       <div className={classNames(styles.bottomToolbar, {}, [])}>
         <ThemeToggle className={styles.themeToggle} />
         <LangToggle />

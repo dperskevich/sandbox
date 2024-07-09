@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
 import { useTranslation } from 'react-i18next';
-import { classNames } from '@/shared/lib/class-names';
+import { classNames } from 'shared/lib/class-names/class-names';
 import styles from './lang-toggle.module.scss';
 import { Button } from '../button/button';
 

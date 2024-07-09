@@ -24,7 +24,7 @@
     "baseUrl": ".",
     // We can use absolute paths in our imports #2
     "paths": {
-      "@/*": ["./src/*"]
+      "*": ["./src/*"]
     }
   },
   "ts-node": {

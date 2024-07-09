@@ -2,7 +2,7 @@ import React, {
   Component, ErrorInfo, ReactNode, Suspense,
 } from 'react';
 import { withTranslation } from 'react-i18next';
-import { AppError } from '@/widgets/app-error/ui/app-error';
+import { AppError } from 'widgets/app-error/ui/app-error';
 
 interface ErrorBoundaryProps {
   children?: ReactNode;
