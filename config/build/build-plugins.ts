@@ -5,7 +5,7 @@ import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
 import { BuildOptions } from './types/config';
 
 export function BuildPlugins({ paths, isDev }: BuildOptions): WebpackPluginInstance[] {
-  return [
+  const plugins = [
     new HtmlWebpackPlugin({
       template: paths.html,
     }),
@@ -15,9 +15,16 @@ export function BuildPlugins({ paths, isDev }: BuildOptions): WebpackPluginInsta
     new ProgressPlugin(),
     new DefinePlugin({
       __IS_DEV__: JSON.stringify(isDev),
-    }),
-    new BundleAnalyzerPlugin({
-      openAnalyzer: false,
-    }),
+    })
   ];
+
+  if (isDev) {
+    plugins.push(
+      new BundleAnalyzerPlugin({
+        openAnalyzer: false,
+      }),
+    )
+  }
+
+  return plugins;
 }
