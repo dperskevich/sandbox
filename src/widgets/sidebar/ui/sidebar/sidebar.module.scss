@@ -10,13 +10,22 @@
   &.collapsed {
     width: 72px;
     overflow: hidden;
-    padding-left: 0;
-    padding-right: 0;
+  }
+
+  .collapseButton {
+    width: 30px;
+    margin-left: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: transform 0.2s;
   }
 
   .bottomToolbar {
     margin: auto auto 20px;
     display: flex;
     gap: 15px;
+    flex-direction: column;
   }
 }

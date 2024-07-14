@@ -11,7 +11,6 @@ interface SidebarProps {
 
 export const Sidebar: FC<SidebarProps> = (props) => {
   const { className } = props;
-  const { t } = useTranslation();
   const [collapsed, setCollapsed] = useState(false);
 
   const toggleCollapsed = () => {
@@ -23,7 +22,13 @@ export const Sidebar: FC<SidebarProps> = (props) => {
       data-testid="Sidebar"
       className={classNames(styles.sidebar, { [styles.collapsed]: collapsed }, [className])}
     >
-      <Button onClick={toggleCollapsed} data-testid="sidebar-toggle">{t('Toggle')}</Button>
+      <Button
+        onClick={toggleCollapsed}
+        className={styles.collapseButton}
+        data-testid="sidebar-toggle"
+      >
+        {collapsed ? '>' : '<'}
+      </Button>
       <div className={classNames(styles.bottomToolbar, {}, [])}>
         <ThemeToggle className={styles.themeToggle} />
         <LangToggle />
