@@ -15,7 +15,7 @@ export function BuildPlugins({ paths, isDev }: BuildOptions): WebpackPluginInsta
     new ProgressPlugin(),
     new DefinePlugin({
       __IS_DEV__: JSON.stringify(isDev),
-    })
+    }),
   ];
 
   if (isDev) {
@@ -23,7 +23,7 @@ export function BuildPlugins({ paths, isDev }: BuildOptions): WebpackPluginInsta
       new BundleAnalyzerPlugin({
         openAnalyzer: false,
       }),
-    )
+    );
   }
 
   return plugins;
