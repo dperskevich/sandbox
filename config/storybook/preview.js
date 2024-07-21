@@ -14,4 +14,3 @@ export const parameters = {
 }
 
 addDecorator(StyleDecorator);
-addDecorator(ThemeDecorator(Theme.Light));

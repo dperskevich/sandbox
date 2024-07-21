@@ -7,8 +7,8 @@ interface PortalProps {
 }
 
 export const Portal: FC<PortalProps> = (props) => {
-  // better to use dicument.body as a default value
+  // better to use document.body as a default value
   // styles import architecture does not allow to di this so far
-  const { children, element = document.getElementsByClassName('app')[0] } = props;
+  const { children, element = document.body } = props;
   return createPortal(children, element);
 };

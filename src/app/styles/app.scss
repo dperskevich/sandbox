@@ -3,13 +3,16 @@
 @import "themes/light";
 @import "themes/dark";
 
-.app {
+body {
   font: var(--font-m);
-  color: var(--secondary-color);
+  color: var(--primary-color);
+}
+
+.app {
   background: var(--bg-color);
   min-height: 100vh;
 
-  .app-content {
+ .app-content {
     display: flex;
 
     .app-page {
@@ -18,3 +21,4 @@
     }
   }
 }
+
