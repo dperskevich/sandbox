@@ -5,8 +5,7 @@ import { classNames } from 'shared/lib/class-names';
 export const ThemeDecorator = (theme: Theme) => (StoryComponent: Story) => (
   <ThemeProvider>
     <div className={classNames('app', {}, [theme])}>
-      AAA
       <StoryComponent />
-    </div >
+    </div>
   </ThemeProvider>
 );

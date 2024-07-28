@@ -12,7 +12,7 @@ body {
   background: var(--bg-color);
   min-height: 100vh;
 
- .app-content {
+  .app-content {
     display: flex;
 
     .app-page {
@@ -21,4 +21,3 @@ body {
     }
   }
 }
-

@@ -9,8 +9,7 @@ export default {
   component: Modal,
 } as ComponentMeta<typeof Modal>;
 
-const Template: ComponentStory<typeof Modal> = (args) =>
-  <Modal isOpen={true} {...args} />;
+const Template: ComponentStory<typeof Modal> = (args) => <Modal isOpen {...args} />;
 
 export const Primary = Template.bind({});
 Primary.args = {
