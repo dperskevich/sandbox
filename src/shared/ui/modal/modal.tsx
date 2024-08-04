@@ -1,3 +1,4 @@
+import { useTheme } from 'app/providers/theme-provider';
 import { FC, ReactNode } from 'react';
 import { classNames } from 'shared/lib/class-names';
 import { Portal } from '../portal/portal';
@@ -12,6 +13,7 @@ interface ModalProps {
 
 export const Modal: FC<ModalProps> = (props) => {
   const { className, isOpen, onClose } = props;
+  const { theme } = useTheme();
 
   const handleClose = () => {
     if (onClose) onClose();
@@ -24,7 +26,7 @@ export const Modal: FC<ModalProps> = (props) => {
   return isOpen
     && (
       <Portal>
-        <div className={classNames(styles.modal, {}, [className])}>
+        <div className={classNames(styles.modal, {}, [className, theme])}>
           <div className={styles.overlay} onClick={handleClose}>
             <div className={styles.content} onClick={handleContentClick}>
               <span className={styles.closeButton} onClick={handleClose} />
