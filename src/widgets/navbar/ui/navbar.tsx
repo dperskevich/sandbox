@@ -5,6 +5,7 @@ import { AppLink, Button } from 'shared/ui';
 import SandboxIcon from 'shared/assets/icons/sandbox.svg';
 import { AppRoutes } from 'shared/config/router/router-config';
 import { Modal } from 'shared/ui/modal/modal';
+import { LoginModal } from 'features/auth-by-username';
 import styles from './navbar.module.scss';
 
 interface NavbarProps {
@@ -15,9 +16,13 @@ export const Navbar: FC<NavbarProps> = ({ className }) => {
   const { t } = useTranslation();
   const [signInOpened, setSignInOpened] = useState(false);
 
-  const handleSignIn = useCallback(() => {
-    setSignInOpened(!signInOpened);
-  }, [signInOpened]);
+  const openAuthModal = useCallback(() => {
+    setSignInOpened(true);
+  }, [setSignInOpened]);
+
+  const closeAuthModal = useCallback(() => {
+    setSignInOpened(false);
+  }, [setSignInOpened]);
 
   return (
     <div className={classNames(styles.navbar, {}, [className])}>
@@ -27,10 +32,8 @@ export const Navbar: FC<NavbarProps> = ({ className }) => {
         <AppLink to={AppRoutes.MAIN}>{t('Main')}</AppLink>
         <AppLink to={AppRoutes.ABOUT}>{t('About')}</AppLink>
       </div>
-      <Button onClick={handleSignIn}>{t('SignIn')}</Button>
-      <Modal isOpen={signInOpened} onClose={handleSignIn}>
-        <div>{t('SignIn')}</div>
-      </Modal>
+      <Button onClick={openAuthModal}>{t('SignIn')}</Button>
+      <LoginModal isOpen={signInOpened} onClose={closeAuthModal} />
     </div>
   );
 };

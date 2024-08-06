@@ -1,5 +1,7 @@
 import { useTheme } from 'app/providers/theme-provider';
-import { FC, ReactNode } from 'react';
+import {
+  FC, ReactNode, useEffect, useState,
+} from 'react';
 import { classNames } from 'shared/lib/class-names';
 import { Portal } from '../portal/portal';
 import styles from './modal.module.scss';
@@ -9,11 +11,19 @@ interface ModalProps {
   children?: ReactNode;
   isOpen?: boolean;
   onClose?: () => void;
+  lazy?: boolean;
 }
 
 export const Modal: FC<ModalProps> = (props) => {
-  const { className, isOpen, onClose } = props;
+  const {
+    className, isOpen, onClose, lazy,
+  } = props;
   const { theme } = useTheme();
+  const [isMounted, setIsMounted] = useState(false);
+
+  useEffect(() => {
+    if (isOpen) setIsMounted(true);
+  }, [isOpen]);
 
   const handleClose = () => {
     if (onClose) onClose();
@@ -22,6 +32,10 @@ export const Modal: FC<ModalProps> = (props) => {
   const handleContentClick = (e: React.MouseEvent) => {
     e.stopPropagation();
   };
+
+  if (!isOpen) return null;
+
+  if (lazy && !isMounted) return null;
 
   return isOpen
     && (
