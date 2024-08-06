@@ -5,4 +5,5 @@ _theory
 node_modules
 package-lock.json
 storybook-static
+extractedTranslations
 
