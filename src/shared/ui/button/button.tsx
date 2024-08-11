@@ -10,15 +10,26 @@ export enum ButtonVariant {
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: ButtonVariant;
   className?: string;
+  disabled?: boolean;
 }
 
 export const Button: FC<ButtonProps> = (props) => {
   const {
-    variant = ButtonVariant.Primary, className, children, ...otherProps
+    variant = ButtonVariant.Primary,
+    className, children, disabled, ...otherProps
   } = props;
 
+  const mods: Record<string, boolean> = {
+    [styles.disabled]: disabled,
+  };
+
   return (
-    <button type="button" className={classNames(styles.button, {}, [className, styles[variant]])} {...otherProps}>
+    <button
+      type="button"
+      className={classNames(styles.button, mods, [className, styles[variant]])}
+      disabled={disabled}
+      {...otherProps}
+    >
       {children}
     </button>
   );

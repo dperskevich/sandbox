@@ -12,7 +12,7 @@ server.use(jsonServer.bodyParser);
 // imitate server delay
 server.use(async (req, res, next) => {
   await new Promise((res) => {
-    setTimeout(res, 800);
+    setTimeout(res, 2000);
   });
   next();
 });
@@ -24,7 +24,7 @@ server.post('/login', (req, res) => {
     const { users = [] } = db;
 
     const userFromBd = users.find(
-      (user) => user.username === username && user.password === password,
+      (user) => user.name === username && user.password === password,
     );
 
     if (userFromBd) {

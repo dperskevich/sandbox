@@ -1,11 +1,14 @@
-import React, { FC, useCallback, useState } from 'react';
+import React, {
+  FC, useCallback, useState,
+} from 'react';
 import { useTranslation } from 'react-i18next';
 import { classNames } from 'shared/lib/class-names/class-names';
 import { AppLink, Button } from 'shared/ui';
 import SandboxIcon from 'shared/assets/icons/sandbox.svg';
 import { AppRoutes } from 'shared/config/router/router-config';
-import { Modal } from 'shared/ui/modal/modal';
 import { LoginModal } from 'features/auth-by-username';
+import { useDispatch, useSelector } from 'react-redux';
+import { getUserAuthData, userActions } from 'entities/user';
 import styles from './navbar.module.scss';
 
 interface NavbarProps {
@@ -14,15 +17,37 @@ interface NavbarProps {
 
 export const Navbar: FC<NavbarProps> = ({ className }) => {
   const { t } = useTranslation();
+  const dispatch = useDispatch();
+  const authData = useSelector(getUserAuthData);
   const [signInOpened, setSignInOpened] = useState(false);
 
   const openAuthModal = useCallback(() => {
     setSignInOpened(true);
-  }, [setSignInOpened]);
+  }, []);
 
   const closeAuthModal = useCallback(() => {
     setSignInOpened(false);
-  }, [setSignInOpened]);
+  }, []);
+
+  const handleLogout = useCallback(() => {
+    dispatch(userActions.logout());
+  }, [dispatch]);
+
+  // todo: better to use composition and make 2 separate navbars
+  // for authorized and unauthorized users
+  const authorizedNavbar = useCallback(() => (
+    <>
+      <span>{authData.username}</span>
+      <Button onClick={handleLogout}>{t('Logout')}</Button>
+    </>
+  ), [authData, handleLogout, t]);
+
+  const unauthorizedNavbar = useCallback(() => (
+    <>
+      <Button onClick={openAuthModal}>{t('SignIn')}</Button>
+      <LoginModal isOpen={signInOpened} onClose={closeAuthModal} />
+    </>
+  ), [closeAuthModal, openAuthModal, signInOpened, t]);
 
   return (
     <div className={classNames(styles.navbar, {}, [className])}>
@@ -32,8 +57,7 @@ export const Navbar: FC<NavbarProps> = ({ className }) => {
         <AppLink to={AppRoutes.MAIN}>{t('Main')}</AppLink>
         <AppLink to={AppRoutes.ABOUT}>{t('About')}</AppLink>
       </div>
-      <Button onClick={openAuthModal}>{t('SignIn')}</Button>
-      <LoginModal isOpen={signInOpened} onClose={closeAuthModal} />
+      {authData ? authorizedNavbar() : unauthorizedNavbar()}
     </div>
   );
 };

@@ -5,5 +5,7 @@
   "Translate": "Перевести",
   "Loading": "Загрузка...",
   "Theme": "Тема",
-  "SignIn": "Войти"
+  "SignIn": "Войти",
+  "Logout": "Выйти",
+  "Invalidlogin": "Неправильный логин"
 }

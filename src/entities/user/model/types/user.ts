@@ -1,6 +1,6 @@
 export interface User {
   id: string;
-  nusername: string;
+  username: string;
   // password: string; - we don't want to expose the password
 }
 

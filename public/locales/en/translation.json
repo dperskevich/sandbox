@@ -5,5 +5,7 @@
   "Translate": "Translate",
   "Loading": "Loading...",
   "Theme": "Theme",
-  "SignIn": "Sign In"
+  "SignIn": "Sign In",
+  "Logout": "Logout",
+  "InvalidLogin": "Invalid Login"
 }
