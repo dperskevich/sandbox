@@ -1,8 +1,7 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 import { USER_LOCAL_STORAGE_KEY } from 'shared/consts/local-storage/local-storage';
-// todo: find out why Storybook build fails here for absolute import
-import { User, userActions } from '../../../../../entities/user';
+import { User, userActions } from 'entities/user';
 
 export interface LoginByUsernameProps {
   username: string;
